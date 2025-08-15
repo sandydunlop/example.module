@@ -1,0 +1,47 @@
+plugins {
+    id 'java' // Or 'java-library' if it is a library
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+configurations {
+    markista
+}
+
+dependencies {
+    // Any other dependencies for this subproject go here.
+    markista("io.github.sandydunlop:markista:0.1.14")
+}
+
+java {
+    withJavadocJar()
+    withSourcesJar()
+    sourceCompatibility = JavaVersion.VERSION_24
+    targetCompatibility = JavaVersion.VERSION_24
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(24)
+    }
+}
+
+javadoc {
+    source = sourceSets.main.allJava
+
+    options {
+        // General options
+        windowTitle = "${project.name} API Documentation"
+        docTitle = "${project.name} API Documentation"
+
+        // Doclet configuration
+        doclet = 'io.github.sandydunlop.markista.doclet.MarkdownDoclet'
+        docletpath = project.configurations.markista
+
+        // Doclet options
+        addBooleanOption("private", true)
+        addBooleanOption('link', true)
+        addBooleanOption('verbose', true)
+    }
+}
+
