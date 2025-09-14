@@ -13,7 +13,7 @@ configurations {
 
 dependencies {
     // Any other dependencies for this subproject go here.
-    markista("io.github.sandydunlop:markista:0.2.0")
+    markista("io.github.sandydunlop:markista:0.3.0")
 }
 
 java {
@@ -40,7 +40,6 @@ javadoc {
 
         // Doclet options
         addBooleanOption("private", true)
-        addBooleanOption('link', true)
         addBooleanOption('verbose', true)
     }
 }
